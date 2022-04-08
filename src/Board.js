@@ -1,5 +1,5 @@
 import React from 'react';
-import Dragula from 'dragula';
+import dragula from 'dragula';
 import 'dragula/dist/dragula.css';
 import Swimlane from './Swimlane';
 import './Board.css';
@@ -62,7 +62,7 @@ export default class Board extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-4">
-              {this.renderSwimlane('Backlog', this.state.clients.backlog, this.swimlanes.backlog)}
+              {dragula(this.renderSwimlane('Backlog', this.state.clients.backlog, this.swimlanes.backlog))}
             </div>
             <div className="col-md-4">
               {this.renderSwimlane('In Progress', this.state.clients.inProgress, this.swimlanes.inProgress)}
@@ -74,5 +74,8 @@ export default class Board extends React.Component {
         </div>
       </div>
     );
+  }
+  componentDidMount(){
+    dragula()
   }
 }
